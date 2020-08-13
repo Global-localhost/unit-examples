@@ -1,6 +1,8 @@
 .idea
 install.sh
 wordpress/
+!wordpress/wp-config.php
+!wordpress/wp-content/themes/twentytwenty-child
 vendor/
 dev/db-volume/
 api/node_modules

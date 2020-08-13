@@ -1,0 +1,96 @@
+/*
+Theme Name: NGINX Space
+Text Domain: twentytwentychild
+Template: twentytwenty
+Version: 0.1
+Requires at least: 4.7
+Requires PHP: 5.2.4
+Description: This is an awesome Description
+
+*/
+
+@font-face {
+    font-family: "Space Mono";
+    src: url("assets/fonts/SpaceMono-Regular.ttf");
+}
+
+html {
+    height: 100%;
+}
+
+body.home {
+    font-family: "Space Mono";
+}
+
+
+.elementor-image-carousel-caption {
+    display: none!important;
+}
+
+#ngxspace-landing {
+    width: 5680px;
+    min-height: 100%;
+    background-image: url("assets/img/space-1164579_1920.png");
+    background-repeat: repeat;
+    animation: slide 90s linear infinite;
+}
+
+#ngxspace-main-content {
+    width: 100%;
+    min-height: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 5%;
+    left: 5%;
+    background-color: transparent!important;
+}
+
+#ngxspace-main-menu ul {
+    display: inline-flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+
+#ngxspace-main-infobox {
+    min-height: 31rem;
+    height: auto;
+    z-index: 99;
+    width: 45rem;
+    border: 1px solid gray;
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    position: absolute;
+    left: 50%;
+    top: 5%;
+}
+
+#ngxspace-main-infobox h2 {
+    margin: 0;
+}
+
+.ngxspace-planet-unit {
+    font-size: 1.5rem;
+    color: #fff;
+    padding-left: 1rem;
+}
+.ngxspace-planet-kind {
+}
+
+.ngxspace-planet-text {}
+
+.ngxspace-planet-years {
+    font-size: 2rem;
+    color: rgba(25,121,167,0.7);
+}
+
+
+@keyframes slide{
+    0%{
+        transform: translate3d(0, 0, 0);
+    }
+    100%{
+        transform: translate3d(-1000px, 0, 0);
+    }
+}
