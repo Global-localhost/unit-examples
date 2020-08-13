@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 set -ex
+DOCKERIMAGE="tippexs/nginxspcae"
+DOCKERTAG="latest"
 
 build_container() {
-  docker build -t org/wpwebsite --no-cache .
+  docker build -t $DOCKERIMAGE:$DOCKERTAG --no-cache .
 }
 
 containerize() {
   echo "Building Container Image"
   build_container
-  docker tag org/wpwebsite:latest docker.reg.com/org/websitewp:latest
   echo "Pushing... "
-  docker push docker.reg.com/org/websitewp:latest
+  docker push $DOCKERIMAGE:$DOCKERTAG
 }
 
 case $1 in

@@ -18,10 +18,10 @@ services:
 #        context: ./
 #        dockerfile: Dockerfile
     image: tippexs/wwp:latest
-    environment:
-      DB_USER: wordpressdev
     volumes:
       - ../wordpress:/var/apphome/wordpress
+      - ../api:/var/apphome/api
       - ../vendor:/var/apphome/vendor
     ports:
       - 8044:8080
+      - 8045:8081

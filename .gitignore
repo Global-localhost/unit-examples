@@ -1,1 +1,6 @@
 .idea
+install.sh
+wordpress/
+vendor/
+dev/db-volume/
+api/node_modules
