@@ -10,8 +10,8 @@ RUN mkdir /var/apphome/ && groupadd -r wordpress && useradd --no-log-init -r -g 
     curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
     cp wp-cli.phar /usr/local/bin/wpc
 
-COPY wordpress /var/apphome
-COPY api /var/apphome
+COPY wordpress/ /var/apphome/wordpress/
+COPY api/ /var/apphome/api/
 RUN chown -R wordpress:wordpress /var/apphome/
 COPY .unit.conf.json /docker-entrypoint.d/.unit.conf.json
 CMD ["unitd", "--no-daemon", "--control", "unix:/var/run/control.unit.sock"]

@@ -16,7 +16,7 @@ containerize() {
 
 case $1 in
 "push")
-  echo "Building and Pushing to AWS ..."
+  echo "Building and Pushing to Remote Registry ..."
   containerize
   ;;
 esac
