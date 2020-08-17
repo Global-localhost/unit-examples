@@ -17,7 +17,7 @@ services:
 #    build:
 #        context: ./
 #        dockerfile: Dockerfile
-    image: tippexs/wwp:latest
+    image: tippexs/nginxspace:latest
     volumes:
       - ../wordpress:/var/apphome/wordpress
       - ../api:/var/apphome/api

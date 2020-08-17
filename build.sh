@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -ex
-DOCKERIMAGE="tippexs/nginxspcae"
+DOCKERIMAGE="tippexs/nginxspace"
 DOCKERTAG="latest"
 
 build_container() {
