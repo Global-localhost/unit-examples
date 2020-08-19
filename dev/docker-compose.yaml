@@ -18,6 +18,9 @@ services:
 #        context: ./
 #        dockerfile: Dockerfile
     image: tippexs/nginxspace:latest
+    restart: always
+    depends_on:
+      - mariadb
     volumes:
       - ../wordpress:/var/apphome/wordpress
       - ../api:/var/apphome/api
