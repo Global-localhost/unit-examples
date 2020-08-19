@@ -1,5 +1,5 @@
 # ************* DEV DOCKER FILE *************
-FROM nginx/unit:1.18.0-full
+FROM nginx/unit:1.19.0-full
 RUN mkdir /var/apphome/ && groupadd -r wordpress && useradd --no-log-init -r -g wordpress wordpress && \
     chown -R wordpress:wordpress /var/apphome/ && \
     apt-get update && apt-get install --no-install-recommends --no-install-suggests -y gnupg && \
