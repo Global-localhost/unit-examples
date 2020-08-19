@@ -39,8 +39,8 @@ define( 'DB_CHARSET', 'utf8mb4' );
 define( 'DB_COLLATE', '' );
 
 
-define( 'WP_HOME', isset ($_ENV['WP_HOME']) ? $_ENV['WP_HOME'] : 'http://nginx.space:8044');
-define( 'WP_SITEURL',isset ($_ENV['WP_SITEURL']) ? $_ENV['WP_SITEURL'] : 'http://nginx.space:8044');
+define( 'WP_HOME', isset ($_ENV['WP_HOME']) ? $_ENV['WP_HOME'] : 'http://space.nginx.org');
+define( 'WP_SITEURL',isset ($_ENV['WP_SITEURL']) ? $_ENV['WP_SITEURL'] : 'http://space.nginx.org');
 
 /**#@+
  * Authentication Unique Keys and Salts.
