@@ -1,4 +1,4 @@
-#Hackathon Notes
+# Hackathon Notes
 
 These are examples how to configure NGINX Unit with Docker. It is not supposed to be an "out of the box" application you are able to click and run.
 
