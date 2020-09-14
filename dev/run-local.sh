@@ -4,12 +4,12 @@ case $1 in
 "dev")
   echo "Building local image and mounting codebase..."
   docker run -it --rm -v $(pwd)/../api:/data/ tippexs/nginxspace:1.19 /bin/bash -c "cd /data/ && npm update"
-  chmod -R 777 ../wordpress ../api
+  chmod -R 777 ../wordpress ../api ../pythonapp ../app1 ../app2
   docker build --no-cache -t tippexs/nginxspace:latest .
-  docker-compose up
+  docker-compose up -d
   ;;
 "no-build")
-  docker-compose up
+  docker-compose up -d
   ;;
 "stop")
   echo "Stoping Services"

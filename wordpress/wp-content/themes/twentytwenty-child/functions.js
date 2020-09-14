@@ -59,8 +59,10 @@ jQuery(function ($) {
           '<span class="ngxspace-planet-unit">'+resp.lengthOfYearUnit+'</span></p><p>(c) by NASA\'s Eye</p>';
     };
 
-    let innerHtmlError = () => {
-        return '<h2>Huston, we have a problem!</h2>';
+    let printPlanet = (planet) => {
+        console.log(planet);
+        return '<h2>'+planet.name+'</h2><p class="ngxspace-planet-kind">'+planet.kind+'</p>' +
+           '<p>(c) by an old School Book</p>';
     };
 
     console.log('transition ended');
@@ -70,7 +72,7 @@ jQuery(function ($) {
     $('.elementor-swiper-button-next').on('click', function (event) {
         let activePlanet = $('.elementor-image-carousel-wrapper > .elementor-image-carousel > .swiper-slide-next');
         $.ajax({
-            url: 'http://space.nginx.org:8086/api/planets/'+activePlanet[0].lastChild?.firstChild.attributes.alt.nodeValue
+            url: 'http://space.nginx.org:85/api/planets/'+activePlanet[0].lastChild?.firstChild.attributes.alt.nodeValue
         }).done(function (resp) {
                 console.log(resp);
                 const wrapper = $('#ngxspace-main-infobox > .elementor-widget-container')[0];
@@ -79,26 +81,22 @@ jQuery(function ($) {
         }).error(function(xhr,resp) {
             console.log(resp);
             const wrapper = $('#ngxspace-main-infobox > .elementor-widget-container')[0];
-            console.log(`fallback: ${activePlanet[0].lastChild?.firstChild.attributes.alt.nodeValue}`);
-            wrapper.innerHTML = innerHtmlError();
+            wrapper.innerHTML = printPlanet(planets[activePlanet[0].lastChild?.firstChild.attributes.alt.nodeValue]);
         });
     });
 
     $('.elementor-swiper-button-prev').on('click', function (event) {
         let activePlanet = $('.elementor-image-carousel-wrapper > .elementor-image-carousel > .swiper-slide-prev');
         $.ajax({
-            url: 'http://space.nginx.org:8086/api/planets/'+activePlanet[0].lastChild?.firstChild.attributes.alt.nodeValue
+            url: 'http://space.nginx.org:85/api/planets/'+activePlanet[0].lastChild?.firstChild.attributes.alt.nodeValue
         }).done(function (resp) {
             console.log(resp);
             const wrapper = $('#ngxspace-main-infobox > .elementor-widget-container')[0];
             console.log(resp.name);
             wrapper.innerHTML = innerHtml(resp);
         }).error(function(xhr,resp) {
-            console.log(resp);
             const wrapper = $('#ngxspace-main-infobox > .elementor-widget-container')[0];
-            console.log(resp.name);
-            console.log(`fallback: ${activePlanet[0].lastChild?.firstChild.attributes.alt.nodeValue}`);
-            wrapper.innerHTML = innerHtmlError();
+            wrapper.innerHTML = printPlanet(planets[activePlanet[0].lastChild?.firstChild.attributes.alt.nodeValue]);
         });
     });
 });

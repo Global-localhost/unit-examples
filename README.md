@@ -1,3 +1,11 @@
+#Hackathon Notes
+
+These are examples how to configure NGINX Unit with Docker. It is not supposed to be an "out of the box" application you are able to click and run.
+
+Fell free to ask question on Slack if you have any.
+
+Happy Hacking!
+
 # unitwp
 NGINX Unit PHP Wordpress buildstack. This will create a docker container image, running wordpress and expose it on port 8080. The production ready container image does not include a database. If you need a database along with your WP installation, check out the dev folder.
 

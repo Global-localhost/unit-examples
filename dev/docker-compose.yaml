@@ -1,6 +1,10 @@
 # Use root/example as user/password credentials
 version: "3.7"
 services:
+  nginx-proxy:
+    image: nginx:latest
+    ports:
+      - 80:80
   mariadb:
     image: mariadb:latest
     ports:
@@ -13,7 +17,7 @@ services:
       MYSQL_PASSWORD: wordpressdev
       MYSQL_DATABASE: wordpress
       MYSQL_ROOT_PASSWORD: devpassword
-  wordpress:
+  unitappserv:
 #    build:
 #        context: ./
 #        dockerfile: Dockerfile
@@ -24,7 +28,12 @@ services:
     volumes:
       - ../wordpress:/var/apphome/wordpress
       - ../api:/var/apphome/api
+      - ../pythonapp:/var/apphome/python
+      - ../app1:/var/apphome/app1
+      - ../app2:/var/apphome/app2
       - ../vendor:/var/apphome/vendor
     ports:
-      - 80:8080
+      - 8080:8080
       - 85:8081
+      - 8000:8000
+      - 9000:9000

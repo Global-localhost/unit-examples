@@ -1,0 +1,1 @@
+<?= "<h1>LB Application 1</h1>" ?>

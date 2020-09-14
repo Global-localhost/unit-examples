@@ -4,10 +4,51 @@
       "pass": "routes/wordpress"
     },
     "*:8081": {
-      "pass": "applications/api"
+      "pass": "applications/api",
+      "tls" : {
+        "certificate": "bundle"
+      }
+    },
+    "*:8000": {
+      "pass": "applications/django_project"
+    },
+    "*:9000": {
+      "pass": "upstreams/rr-lb"
+    },
+    "127.0.0.1:8090": {
+      "pass": "applications/app1"
+    },
+    "127.0.0.1:8095": {
+      "pass": "applications/app2"
+    }
+  },
+  "upstreams": {
+    "rr-lb": {
+      "servers": {
+        "127.0.0.1:8090": { },
+        "127.0.0.1:8095": {
+          "weight": 0.5
+        }
+      }
     }
   },
   "routes": {
+    "django": [
+      {
+        "match": {
+          "uri": "/static/*"
+        },
+
+        "action": {
+          "share": "/var/apphome/python/"
+        }
+      },
+      {
+        "action": {
+          "pass": "applications/django_project"
+        }
+      }
+    ],
     "wordpress": [
       {
         "match": {
@@ -53,10 +94,50 @@
         }
       }
     },
+    "app1": {
+        "type": "php",
+        "user": "wordpress",
+        "group": "wordpress",
+        "targets": {
+          "direct": {
+            "root": "/var/apphome/app1"
+          },
+          "index": {
+            "root": "/var/apphome/app1",
+            "script": "index.php"
+            }
+        }
+    },
+    "app2": {
+      "type": "php",
+      "user": "wordpress",
+      "group": "wordpress",
+      "targets": {
+        "direct": {
+          "root": "/var/apphome/app2"
+        },
+        "index": {
+          "root": "/var/apphome/app2",
+          "script": "index.php"
+        }
+      }
+    },
     "api": {
       "type": "external",
       "working_directory": "/var/apphome/api/",
       "executable": "server.js"
+    },
+    "django_project": {
+      "type": "python 3",
+      "path": "/var/apphome/python/",
+      "module": "unitspace.wsgi",
+      "environment": {
+        "DJANGO_SETTINGS_MODULE": "unitspace.settings",
+        "DB_ENGINE": "django.db.backends.postgresql",
+        "DB_NAME": "project",
+        "DB_HOST": "127.0.0.1",
+        "DB_PORT": "5432"
+      }
     }
   },
   "settings": {
@@ -76,5 +157,6 @@
         }
       }
     }
-  }
+  },
+  "access_log": "/var/log/access.log"
 }
