@@ -1,0 +1,32 @@
+{
+  "listeners": {
+    "*:8080": {
+      "pass": "applications/api"
+    }
+  },
+  "applications": {
+    "api": {
+      "type": "external",
+      "working_directory": "/var/apphome/api/",
+      "executable": "server.js"
+    }
+  },
+  "settings": {
+    "http": {
+      "header_read_timeout": 10,
+      "body_read_timeout": 10,
+      "send_timeout": 10,
+      "idle_timeout": 120,
+      "max_body_size": 6291456,
+      "static": {
+        "mime_types": {
+          "text/plain": [
+            ".log",
+            "README",
+            "CHANGES"
+          ]
+        }
+      }
+    }
+  }
+}

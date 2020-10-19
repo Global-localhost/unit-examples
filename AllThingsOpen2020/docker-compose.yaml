@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  events-svc:
+    build:
+      context: ./events
+      dockerfile: Dockerfile
+    image: 'nginx/events-svc:latest'
+    restart: always
+    ports:
+      - '8085:8080'
+  images-svc:
+    build:
+      context: ./images
+      dockerfile: Dockerfile
+    image: 'nginx/images-svc:latest'
+    restart: always
+    ports:
+      - '8090:8080'
+  planets-svc:
+    build:
+      context: ./planets
+      dockerfile: Dockerfile
+    image: 'nginx/plantes-svc:latest'
+    restart: always
+    ports:
+      - '8080:8080'

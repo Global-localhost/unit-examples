@@ -9,7 +9,7 @@
 # |  | \   |  |  '--'  |(_|  |   |  | \   |  /  .'.  \       ('  '-'(_.-' |  | \   |(_|  |      |  |
 # `--'  `--'   `------'   `--'   `--'  `--' '--'   '--'        `-----'    `--'  `--'  `--'      `--'
 #
-FROM nginx/unit:1.19.0-full
+FROM nginx/unit:1.20.0-full
 # Preparing directories and libs
 RUN mkdir /var/apphome/ && groupadd -r wordpress && useradd --no-log-init -r -g wordpress wordpress && \
     chown -R wordpress:wordpress /var/apphome/ && \

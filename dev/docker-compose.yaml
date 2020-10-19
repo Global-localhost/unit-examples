@@ -27,13 +27,11 @@ services:
       - mariadb
     volumes:
       - ../wordpress:/var/apphome/wordpress
-      - ../api:/var/apphome/api
       - ../pythonapp:/var/apphome/python
       - ../app1:/var/apphome/app1
       - ../app2:/var/apphome/app2
       - ../vendor:/var/apphome/vendor
     ports:
-      - 8080:8080
-      - 85:8081
+      - 8100:8080
       - 8000:8000
       - 9000:9000

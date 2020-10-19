@@ -3,17 +3,14 @@
     "*:8080": {
       "pass": "routes/wordpress"
     },
-    "*:8081": {
-      "pass": "applications/api",
-      "tls" : {
-        "certificate": "bundle"
-      }
-    },
     "*:8000": {
       "pass": "applications/django_project"
     },
     "*:9000": {
-      "pass": "upstreams/rr-lb"
+      "pass": "upstreams/rr-lb",
+      "tls" : {
+        "certificate": "bundle"
+      }
     },
     "127.0.0.1:8090": {
       "pass": "applications/app1"
@@ -27,7 +24,7 @@
       "servers": {
         "127.0.0.1:8090": { },
         "127.0.0.1:8095": {
-          "weight": 0.5
+          "weight": 0.5 
         }
       }
     }
@@ -121,11 +118,6 @@
           "script": "index.php"
         }
       }
-    },
-    "api": {
-      "type": "external",
-      "working_directory": "/var/apphome/api/",
-      "executable": "server.js"
     },
     "django_project": {
       "type": "python 3",
